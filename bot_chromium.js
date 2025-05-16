@@ -29,7 +29,7 @@ const client = new Client({
   }),
   puppeteer: {
     headless: false,
-    executablePath: 'C://Program Files//Google//Chrome//Application//chrome.exe',
+    executablePath: 'C://Users//MEUPC//AppData//Local//Chromium//Application//chrome.exe',
     args: [
       '--no-sandbox',
       '--disable-setuid-sandbox',
@@ -259,14 +259,6 @@ client.on('message', async (message) => {
       created_at: new Date().toISOString()
     };
 
-    // Verifica se é uma mensagem de broadcast
-    if (message.from === 'status@broadcast' || 
-        (message.id._serialized && message.id._serialized.includes('false_status@broadcast')) ||
-        message.from === 'status') {
-      console.log('\n=== MENSAGEM DE BROADCAST DETECTADA - IGNORANDO ===');
-      return;
-    }
-
     console.log('\n=== ENVIANDO PARA API /buffer ===');
     try {
       const response = await axios.post('http://145.223.27.42:7025/buffer', formattedMessage);
@@ -324,13 +316,6 @@ app.post('/send-message', async (req, res) => {
         // Se o número não começar com 55 (código do Brasil), adiciona
         if (!formattedNumber.startsWith('55')) {
             formattedNumber = '55' + formattedNumber;
-        }
-
-        // Verifica se o número tem o 9 extra após o DDD
-        if (formattedNumber.length === 13) { // 55 + DDD(2) + 9 + número(8)
-            const ddd = formattedNumber.substring(2, 4);
-            const numero = formattedNumber.substring(5); // Remove o 9
-            formattedNumber = `55${ddd}${numero}`;
         }
         
         // Adiciona o sufixo @c.us se não existir
@@ -453,7 +438,6 @@ app.get('/test-image.png', (req, res) => {
     res.sendFile(path.join(__dirname, 'IMG_8234.png'));
 });
 
-server.listen(3333, () => {
+server.listen(3334, () => {
   console.log('Servidor rodando na porta 3333');
-});
-
+}); 
