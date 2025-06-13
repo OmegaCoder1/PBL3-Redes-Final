@@ -35,7 +35,7 @@ docker-compose build
 ./setup.sh
 ```
 
-## ⚙️ Processo de Inicialização
+## ⚙️ Processo de Inicialização do setup:
 
 O script `setup.sh` executa a seguinte sequência:
 
