@@ -21,8 +21,8 @@ O sistema é composto pelos seguintes componentes:
 
 1. Clone o repositório:
 ```bash
-git clone [URL_DO_REPOSITÓRIO]
-cd [NOME_DO_DIRETÓRIO]
+git clone https://github.com/OmegaCoder1/PBL3-Redes-Final
+cd PBL3-Redes-Final
 ```
 
 2. Construa as imagens Docker:
