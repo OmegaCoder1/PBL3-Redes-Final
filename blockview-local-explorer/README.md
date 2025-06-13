@@ -1,73 +1,33 @@
-# Welcome to your Lovable project
+# BlockView Local Explorer
 
-## Project info
+Este é um projeto desenvolvido por Zeu para visualização local de blocos da blockchain.
 
-**URL**: https://lovable.dev/projects/f3207825-d88d-4349-a0f9-0b22b7afeac1
+## Desenvolvimento Local
 
-## How can I edit this code?
+Para trabalhar localmente usando seu próprio IDE, você pode clonar este repositório e fazer push das alterações.
 
-There are several ways of editing your application.
+## Instalação
 
-**Use Lovable**
+```bash
+npm install
+```
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/f3207825-d88d-4349-a0f9-0b22b7afeac1) and start prompting.
+## Executando o Projeto
 
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+## Build
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```bash
+npm run build
+```
 
-**Use GitHub Codespaces**
+## Deploy
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Para fazer deploy do projeto, você pode usar qualquer serviço de hospedagem estática como Vercel, Netlify ou GitHub Pages.
 
-## What technologies are used for this project?
+## Domínio Personalizado
 
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/f3207825-d88d-4349-a0f9-0b22b7afeac1) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+Você pode configurar um domínio personalizado para seu projeto seguindo as instruções do seu provedor de hospedagem.
