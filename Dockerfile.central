@@ -1,0 +1,16 @@
+FROM python:3.9-slim
+
+WORKDIR /app
+
+# Instala as dependências Python
+RUN pip install --no-cache-dir web3 requests flask flask-cors
+
+# Copia os arquivos necessários
+COPY centrais_postos/ /shared/centrais_postos/
+COPY PostoReserva_abi.json /shared/centrais_postos/
+
+# Expõe a porta que a central usa
+EXPOSE 5001
+
+# Comando para executar a central
+CMD ["python", "/shared/centrais_postos/central_posto1.py"] 

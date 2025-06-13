@@ -1,0 +1,24 @@
+FROM python:3.9-slim
+
+WORKDIR /app
+
+# Instala as dependências Python
+RUN pip install --no-cache-dir web3 requests flask flask-cors
+
+# Copia os arquivos necessários para um diretório temporário
+COPY cliente.py /app/
+COPY centrais_postos/ /app/centrais_postos/
+
+# Cria o script de inicialização
+RUN echo '#!/bin/sh\n\
+mkdir -p /shared/centrais_postos\n\
+cp /app/cliente.py /shared/\n\
+cp -r /app/centrais_postos/* /shared/centrais_postos/\n\
+exec python /shared/cliente.py' > /app/entrypoint.sh && \
+chmod +x /app/entrypoint.sh
+
+# Expõe a porta que o cliente usa
+EXPOSE 5003
+
+# Comando para executar o script de inicialização
+CMD ["/app/entrypoint.sh"] 

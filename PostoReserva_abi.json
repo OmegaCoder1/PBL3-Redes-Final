@@ -1,0 +1,314 @@
+{
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "cliente",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "id",
+          "type": "uint256"
+        }
+      ],
+      "name": "NovoBloco",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "idBloco",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "servidor",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "bool",
+          "name": "sucesso",
+          "type": "bool"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "motivo",
+          "type": "string"
+        }
+      ],
+      "name": "ReservaRespondida",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "id",
+          "type": "uint256"
+        }
+      ],
+      "name": "getBloco",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "cliente",
+              "type": "address"
+            },
+            {
+              "internalType": "int256",
+              "name": "origemX",
+              "type": "int256"
+            },
+            {
+              "internalType": "int256",
+              "name": "origemY",
+              "type": "int256"
+            },
+            {
+              "internalType": "int256",
+              "name": "destinoX",
+              "type": "int256"
+            },
+            {
+              "internalType": "int256",
+              "name": "destinoY",
+              "type": "int256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "bateria",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "timestamp",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct PostoReserva.Bloco",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "idBloco",
+          "type": "uint256"
+        }
+      ],
+      "name": "getRespostas",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "servidor",
+              "type": "address"
+            },
+            {
+              "internalType": "bool",
+              "name": "sucesso",
+              "type": "bool"
+            },
+            {
+              "internalType": "string",
+              "name": "motivo",
+              "type": "string"
+            },
+            {
+              "internalType": "uint256",
+              "name": "timestamp",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct PostoReserva.Resposta[]",
+          "name": "",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "idBloco",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bool",
+          "name": "sucesso",
+          "type": "bool"
+        },
+        {
+          "internalType": "string",
+          "name": "motivo",
+          "type": "string"
+        }
+      ],
+      "name": "registrarResposta",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "registros",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "cliente",
+          "type": "address"
+        },
+        {
+          "internalType": "int256",
+          "name": "origemX",
+          "type": "int256"
+        },
+        {
+          "internalType": "int256",
+          "name": "origemY",
+          "type": "int256"
+        },
+        {
+          "internalType": "int256",
+          "name": "destinoX",
+          "type": "int256"
+        },
+        {
+          "internalType": "int256",
+          "name": "destinoY",
+          "type": "int256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "bateria",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "timestamp",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "registrosLength",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "respostas",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "servidor",
+          "type": "address"
+        },
+        {
+          "internalType": "bool",
+          "name": "sucesso",
+          "type": "bool"
+        },
+        {
+          "internalType": "string",
+          "name": "motivo",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "timestamp",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "int256",
+          "name": "origemX",
+          "type": "int256"
+        },
+        {
+          "internalType": "int256",
+          "name": "origemY",
+          "type": "int256"
+        },
+        {
+          "internalType": "int256",
+          "name": "destinoX",
+          "type": "int256"
+        },
+        {
+          "internalType": "int256",
+          "name": "destinoY",
+          "type": "int256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "bateria",
+          "type": "uint256"
+        }
+      ],
+      "name": "solicitarRegistro",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ]
+}    

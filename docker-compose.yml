@@ -1,0 +1,129 @@
+version: '3.8'
+
+services:
+  ganache:
+    image: trufflesuite/ganache:latest
+    container_name: pbl-redes-ganache
+    command: --host 0.0.0.0 --port 7545 --deterministic --db /data/chaindata
+    ports:
+      - "7545:7545"
+    volumes:
+      - ganache_data:/data
+    networks:
+      - blockchain_network
+    restart: unless-stopped
+
+  setup:
+    build:
+      context: .
+      dockerfile: Dockerfile.setup
+    container_name: pbl-redes-setup
+    depends_on:
+      - ganache
+    networks:
+      - blockchain_network
+    environment:
+      - GANACHE_URL=http://ganache:7545
+    volumes:
+      - shared_data:/shared
+      - ./:/app
+
+  build-contract:
+    build:
+      context: .
+      dockerfile: Dockerfile.build
+    container_name: pbl-redes-build
+    depends_on:
+      - setup
+    networks:
+      - blockchain_network
+    environment:
+      - GANACHE_URL=http://ganache:7545
+    volumes:
+      - shared_data:/shared
+      - ./:/app
+
+  central1:
+    build:
+      context: .
+      dockerfile: Dockerfile.central
+    container_name: pbl-redes-central1
+    depends_on:
+      - build-contract
+    command: ["python", "/shared/centrais_postos/central_posto1.py"]
+    networks:
+      - blockchain_network
+    environment:
+      - GANACHE_URL=http://ganache:7545
+    volumes:
+      - shared_data:/shared
+
+  central2:
+    build:
+      context: .
+      dockerfile: Dockerfile.central
+    container_name: pbl-redes-central2
+    depends_on:
+      - build-contract
+    command: ["python", "/shared/centrais_postos/central_posto2.py"]
+    networks:
+      - blockchain_network
+    environment:
+      - GANACHE_URL=http://ganache:7545
+    volumes:
+      - shared_data:/shared
+
+  central3:
+    build:
+      context: .
+      dockerfile: Dockerfile.central
+    container_name: pbl-redes-central3
+    depends_on:
+      - build-contract
+    command: ["python", "/shared/centrais_postos/central_posto3.py"]
+    networks:
+      - blockchain_network
+    environment:
+      - GANACHE_URL=http://ganache:7545
+    volumes:
+      - shared_data:/shared
+
+  cliente:
+    build:
+      context: .
+      dockerfile: Dockerfile.cliente
+    container_name: pbl-redes-cliente
+    depends_on:
+      - central1
+      - central2
+      - central3
+    stdin_open: true
+    tty: true
+    networks:
+      - blockchain_network
+    environment:
+      - GANACHE_URL=http://ganache:7545
+    volumes:
+      - shared_data:/shared
+
+  blockview:
+    build:
+      context: ./blockview-local-explorer
+      dockerfile: Dockerfile
+    container_name: pbl-redes-blockview
+    ports:
+      - "3456:8080"
+    networks:
+      - blockchain_network
+    environment:
+      - VITE_GANACHE_URL=http://ganache:7545
+    depends_on:
+      - ganache
+
+networks:
+  blockchain_network:
+    name: pbl-redes_blockchain_network
+
+volumes:
+  ganache_data:
+  shared_data: 

@@ -1,0 +1,14 @@
+FROM python:3.9-slim
+
+WORKDIR /app
+
+# Instala as dependências Python
+RUN pip install --no-cache-dir web3 requests
+
+# Copia os arquivos necessários
+COPY setup_blockchain.py /app/
+COPY centrais_postos/ /shared/centrais_postos/
+COPY hardhat.config.js /app/
+
+# Comando para executar o setup
+CMD ["python", "setup_blockchain.py"] 
